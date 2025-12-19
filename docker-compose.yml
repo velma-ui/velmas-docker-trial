@@ -1,9 +1,22 @@
 services:
   web:
     build: .
-    container_name: velma-flask-compose
     ports:
       - "3000:3000"
-    volumes:
-      - ./app.py:/app/app.py
+    depends_on:
+      - db
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
 

@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY app.py .
 
-RUN pip install flask
+RUN pip install flask psycopg2-binary
 
 EXPOSE 3000
 
 CMD ["python", "app.py"]
+
