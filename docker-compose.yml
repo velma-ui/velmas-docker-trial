@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    container_name: velma-flask-compose
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app.py:/app/app.py
+
